@@ -9,17 +9,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
+@RequestMapping("/lifecycle/test01")
 public class Test01Controller {
 
     @ResponseBody
-    @RequestMapping("/lifecycle/test01/1")
-    public String Hello()
+    @RequestMapping("/1")
+    public String stringResponse()
     {
-        return "hello";
+        return  "<html>\n" +
+                "   <head><title>Test01</title></head>\n" +
+                "   <body>\n" +
+                "       <h1>테스트 프로젝트 완성</h1>\n" +
+                "       <h3>해당 프로젝트를 통해서 문제 풀이를 진행합니다</h3>\n" +
+                "   </body>\n" +
+                "</html>";
     }
 
     @ResponseBody
-    @RequestMapping("/lifecycle/test01/2")
+    @RequestMapping("/2")
     public Map<String, Integer> ResponseJson()
     {
         Map<String, Integer> score = new HashMap<>();
