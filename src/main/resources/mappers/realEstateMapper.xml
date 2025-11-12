@@ -36,7 +36,11 @@
         FROM
             `real_estate`
         WHERE
-            `rent_price` &lt; #{rent}
+            <![CDATA[
+            `type` = "월세"
+        AND
+            `rent_price` < #{rent}
+            ]]>
     </select>
 
     <select id="selectRowPrice" parameterType="int"
@@ -53,9 +57,73 @@
              , `updated_at`
         FROM
             `real_estate`
-        WHERE `area` &gt;= #{area}
-          AND `price` &lt;= #{price}
+        WHERE
+            <![CDATA[
+            `area` >= #{area}
+        AND
+            `price` <= #{price}
+            ]]>
         ORDER BY
             `created_at` DESC
     </select>
+
+    <insert id="insertRealEstate" parameterType="com.devwork.springtest.mybatis.domain.RealEstate">
+        INSERT INTO
+            `real_estate`
+        (
+            `realtor_id`
+            , `address`
+            , `area`
+            , `type`
+            , `price`
+        )
+        VALUE
+        (
+            #{realtorId}
+            , #{address}
+            , #{area}
+            , #{type}
+            , #{price}
+        )
+    </insert>
+
+    <insert id="paramInsertRealEstate" parameterType="map">
+        INSERT INTO
+            `real_estate`
+        (
+          `realtor_id`
+        , `address`
+        , `area`
+        , `type`
+        , `price`
+        , `rent_price`
+        )
+            VALUE
+            (
+            #{realtorId}
+            , #{address}
+            , #{area}
+            , #{type}
+            , #{price}
+            , #{rentPrice}
+            )
+    </insert>
+
+    <update id="updateRealEstateById" parameterType="map">
+        UPDATE
+            `real_estate`
+        SET
+            `type` = #{type}
+             , `price` = #{price}
+        WHERE
+            `id` = #{id}
+    </update>
+
+    <delete id="deleteRealEstateById" parameterType="int">
+        DELETE
+        FROM
+            `real_estate`
+        WHERE
+            `id` = #{id}
+    </delete>
 </mapper>

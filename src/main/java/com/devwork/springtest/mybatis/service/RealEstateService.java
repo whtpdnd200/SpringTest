@@ -14,18 +14,37 @@ public class RealEstateService {
     @Autowired
     private RealEstateRepository realEstateRepository;
 
-    public RealEstate getRealEstate(int id)
-    {
+    public RealEstate getRealEstate(int id) {
         return realEstateRepository.selectRealEstate(id);
     }
 
-    public List<RealEstate> getRowRentPrice(int rent)
-    {
+    public List<RealEstate> getRowRentPrice(int rent) {
         return realEstateRepository.selectRowRentPrice(rent);
     }
 
-    public List<RealEstate> getRowPrice(int area, int price)
-    {
+    public List<RealEstate> getRowPrice(int area, int price) {
         return realEstateRepository.selectRowPrice(area, price);
+    }
+
+    public int createRealEstate(RealEstate realEstate) {
+        return realEstateRepository.insertRealEstate(realEstate);
+    }
+
+    public int paramCreateRealEstate(
+            int realtorId
+            , String address
+            , int area
+            , String type
+            , int price
+            , int rentPrice) {
+        return realEstateRepository.paramInsertRealEstate(realtorId, address, area, type, price, rentPrice);
+    }
+
+    public int updateRealEstateById(int id, String type, int price) {
+        return realEstateRepository.updateRealEstateById(id, type, price);
+    }
+
+    public int deleteRealEstateById(int id) {
+        return realEstateRepository.deleteRealEstateById(id);
     }
 }
