@@ -15,7 +15,11 @@ public class SellerService {
         return sellerRepository.insertSeller(name, image, temperature);
     }
 
-    public Seller getLastSeller() {
+    public Seller getLastSeller(String id) {
+        if(id != null && sellerRepository.selectSellerById(Integer.parseInt(id)) != null)
+        {
+            return sellerRepository.selectSellerById(Integer.parseInt(id));
+        }
         return sellerRepository.selectLastSeller();
     }
 }
