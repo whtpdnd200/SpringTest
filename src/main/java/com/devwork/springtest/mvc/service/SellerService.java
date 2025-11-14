@@ -15,8 +15,8 @@ public class SellerService {
         return sellerRepository.insertSeller(name, image, temperature);
     }
 
-    public Seller getLastSeller(int id) {
-        if(id != 0 && sellerRepository.selectSellerById(id) != null)
+    public Seller getSeller(Integer id) {
+        if(id != null && sellerRepository.selectSellerById(id) != null)
         {
             return sellerRepository.selectSellerById(id);
         }

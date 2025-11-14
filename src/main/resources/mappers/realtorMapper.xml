@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.devwork.springtest.mvc.repository.RealtorRepository">
+    <insert id="insertRealtor"
+    parameterType="com.devwork.springtest.mvc.domain.Realtor"
+    useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO
+            `realtor`
+        (
+            `office`
+            , `phone_number`
+            , `address`
+            , `grade`
+        )
+        VALUE
+        (
+            #{office}
+            , #{phoneNumber}
+            , #{address}
+            , #{grade}
+        )
+    </insert>
+
+    <select id="selectRealtorById" parameterType="int"
+    resultType="com.devwork.springtest.mvc.domain.Realtor">
+        SELECT
+         `id`
+         , `office`
+         , `phone_number`
+         , `address`
+         , `grade`
+         , `created_at`
+         , `updated_at`
+        FROM
+            `realtor`
+        WHERE
+            `id` = #{id}
+    </select>
+</mapper>

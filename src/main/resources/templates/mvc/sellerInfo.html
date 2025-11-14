@@ -8,15 +8,9 @@
 <body>
     <div class="container">
         <h2>판매자 정보</h2>
-        <div>
-            <img width="200px" height="200px" th:src="${result.profileImage}">
-        </div>
-        <div class="display-4" th:text="${result.nickname}">
-            다팔아
-        </div>
-        <div class="text-warning" th:text="${result.temperature}">
-            온도
-        </div>
+        <div><img width="200px" height="200px" th:src="${result.profileImage}" src="https://cdn.pixabay.com/photo/2025/09/12/08/52/poisonous-snake-9829897_1280.jpg"></div>
+        <div class="display-4" th:text="${result.nickname}">다팔아</div>
+        <div class="text-warning font-weight-bold" th:text="${result.temperature}">온도</div>
     </div>
 </body>
 </html>
