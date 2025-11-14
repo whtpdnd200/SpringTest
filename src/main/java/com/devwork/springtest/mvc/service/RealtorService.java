@@ -16,6 +16,6 @@ public class RealtorService {
     }
 
     public Realtor getRealtorInfo(int id) {
-
+        return realtorRepository.selectRealtorById(id);
     }
 }

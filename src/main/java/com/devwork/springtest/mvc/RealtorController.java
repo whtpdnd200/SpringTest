@@ -4,7 +4,9 @@ import com.devwork.springtest.mvc.domain.Realtor;
 import com.devwork.springtest.mvc.service.RealtorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -21,9 +23,10 @@ public class RealtorController {
         return "mvc/realtorAdd";
     }
 
-    @GetMapping("/info")
+    @PostMapping("/info")
     public String responseInfo(
-            @RequestParam("office") String office
+            Model model
+            , @RequestParam("office") String office
             , @RequestParam("phoneNumber") String phoneNumber
             , @RequestParam("address") String address
             , @RequestParam("grade") String grade
@@ -33,8 +36,8 @@ public class RealtorController {
         realtor.setPhoneNumber(phoneNumber);
         realtor.setAddress(address);
         realtor.setGrade(grade);
-        realtorService.createRealtor(realtor);
-
-        return "";
+        int count = realtorService.createRealtor(realtor);
+        model.addAttribute("realtor", realtorService.getRealtorInfo(realtor.getId()));
+        return "/mvc/realtorInfo";
     }
 }
