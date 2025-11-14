@@ -31,13 +31,8 @@ public class RealtorController {
             , @RequestParam("address") String address
             , @RequestParam("grade") String grade
     ) {
-        Realtor realtor = new Realtor();
-        realtor.setOffice(office);
-        realtor.setPhoneNumber(phoneNumber);
-        realtor.setAddress(address);
-        realtor.setGrade(grade);
-        int count = realtorService.createRealtor(realtor);
-        model.addAttribute("realtor", realtorService.getRealtorInfo(realtor.getId()));
+        Realtor realtor = realtorService.createRealtor(office, phoneNumber, address, grade);
+        model.addAttribute("realtor", realtor);
         return "/mvc/realtorInfo";
     }
 }

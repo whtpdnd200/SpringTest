@@ -11,8 +11,18 @@ public class RealtorService {
     @Autowired
     private RealtorRepository realtorRepository;
 
-    public int createRealtor(Realtor realtor) {
-        return realtorRepository.insertRealtor(realtor);
+    public Realtor createRealtor(String office, String phoneNumber, String address, String grade) {
+        Realtor realtor = new Realtor();
+        realtor.setOffice(office);
+        realtor.setPhoneNumber(phoneNumber);
+        realtor.setAddress(address);
+        realtor.setGrade(grade);
+        int count = realtorRepository.insertRealtor(realtor);
+        if(count != 1)
+        {
+            return null;
+        }
+        return getRealtorInfo(realtor.getId());
     }
 
     public Realtor getRealtorInfo(int id) {
