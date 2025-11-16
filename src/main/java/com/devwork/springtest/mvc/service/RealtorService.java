@@ -12,7 +12,6 @@ public class RealtorService {
     private RealtorRepository realtorRepository;
 
     public int createRealtor(Realtor realtor) {
-
         return realtorRepository.insertRealtor(realtor);
     }
 
