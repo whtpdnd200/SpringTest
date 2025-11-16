@@ -22,20 +22,4 @@
             , #{grade}
         )
     </insert>
-
-    <select id="selectRealtorById" parameterType="int"
-    resultType="com.devwork.springtest.mvc.domain.Realtor">
-        SELECT
-         `id`
-         , `office`
-         , `phone_number`
-         , `address`
-         , `grade`
-         , `created_at`
-         , `updated_at`
-        FROM
-            `realtor`
-        WHERE
-            `id` = #{id}
-    </select>
 </mapper>

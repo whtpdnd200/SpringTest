@@ -9,5 +9,4 @@ public interface RealtorRepository {
 
     public int insertRealtor(Realtor realtor);
 
-    public Realtor selectRealtorById(@Param("id") int id);
 }
