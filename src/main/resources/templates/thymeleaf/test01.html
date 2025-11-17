@@ -7,8 +7,9 @@
           integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
 <body>
-    <h2>1. 변수</h2>
+
     <th:block th:with="number1 = 36, number2 = 3">
+        <h2>1. 변수</h2>
         <h3 th:text="|첫번째 숫자 : ${number1}|"></h3>
         <h3 th:text="|두번째 숫자 : ${number2}|"></h3>
 
@@ -20,11 +21,11 @@
         <h3 th:text="|나누기 : ${number1 / number2}|"></h3>
 
         <h2>3. 태그 그대로 표현</h2>
-        <h3 th:utext="'<h3>안녕하세요</h3>'"></h3>
+        <div th:utext="'<h3>안녕하세요</h3>'"></div>
 
         <h2>4. if와 unless</h2>
         <h1 th:if="${(number1 + number2) / 2 >= 10}" th:text="${(number1 + number2) / 2.0}"></h1>
-        <h3 th:if="${(number1 + number2) / 2 < 10}" th:text="${(number1 + number2) / 2.0}"></h3>
+        <h3 th:unless="${(number1 + number2) / 2 >= 10}" th:text="${(number1 + number2) / 2.0}"></h3>
     </th:block>
 
 
