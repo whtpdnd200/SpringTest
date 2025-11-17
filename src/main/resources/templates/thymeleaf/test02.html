@@ -37,14 +37,17 @@
             </thead>
             <tbody>
                 <tr th:each="member:${membership}">
-                    <th:block th:with="color=${member.point >= 5000} ? 'text-primary' : ''
-                    , grade=${member.grade == 'VIP' ? 'text-danger' : (member.grade == 'GOLD' ? 'text-warning' : '')}">
-
                     <td th:text="${member.name}">조세웅</td>
                     <td th:text="${member.phoneNumber}">010-4548-8754</td>
-                    <td th:class="${grade}" th:text="${member.grade}">VIP</td>
-                    <td th:class="${color}" th:text="|${member.point}P|">12047P</td>
-                    </th:block>
+                    <td th:switch="${member.grade}">
+                        <span th:case="'VIP'" th:text="${member.grade}" class="text-danger">VIP</span>
+                        <span th:case="'GOLD'" th:text="${member.grade}" class="text-warning"></span>
+                        <span th:case="*" th:text="${member.grade}"></span>
+                    </td>
+                    <td>
+                        <span th:if="${member.point >= 5000}" class="text-primary" th:text="|${member.point}P|">12047P</span>
+                        <span th:unless="${member.point >= 5000}" th:text="|${member.point}P|">12047P</span>
+                    </td>
                 </tr>
             </tbody>
         </table>
