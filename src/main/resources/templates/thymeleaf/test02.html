@@ -40,9 +40,9 @@
                     <td th:text="${member.name}">조세웅</td>
                     <td th:text="${member.phoneNumber}">010-4548-8754</td>
                     <td th:switch="${member.grade}">
-                        <span th:case="'VIP'" th:text="${member.grade}" class="text-danger">VIP</span>
-                        <span th:case="'GOLD'" th:text="${member.grade}" class="text-warning"></span>
-                        <span th:case="*" th:text="${member.grade}"></span>
+                        <span th:case="'VIP'" class="text-danger">VIP</span>
+                        <span th:case="'GOLD'" class="text-warning">GOLD</span>
+                        <span th:case="*" th:text="${member.grade}">BASIC</span>
                     </td>
                     <td>
                         <span th:if="${member.point >= 5000}" class="text-primary" th:text="|${member.point}P|">12047P</span>

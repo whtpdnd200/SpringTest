@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>날씨 정보 페이지</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div id="wrap" class="">
+        <div class="d-flex">
+            <nav>
+                <div class="side-bar">
+                    <div class="logo text-light font-weight-bold text-center pt-2">
+                        <img width="30px" height="30px" src="http://marondal.com/material/images/dulumary/web/jstl/weather-logo.png" alt="기상청 로고">
+                        기상청
+                    </div>
+                    <ul class="nav flex-column nav-menu font-weight-bold">
+                        <li class="nav-item"><a class="nav-link text-light" href="#">날씨</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#">날씨입력</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#">테마날씨</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#">관측 기후</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <section class="">
+                <div class="main-content px-3">
+                    <h2>과거 날씨</h2>
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th>날짜</th>
+                                <th>날씨</th>
+                                <th>기온</th>
+                                <th>강수량</th>
+                                <th>미세먼지</th>
+                                <th>풍속</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2015년 7월 1일</td>
+                                <td>
+                                    <img src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg">
+                                </td>
+                                <td>21.9&#x2103;</td>
+                                <td>83.5mm</td>
+                                <td>보통</td>
+                                <td>2.9km/h</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <footer class="">
+            <div class="d-flex align-items-center footer-menu">
+                <div class="footer-logo ml-3 col-2">
+                    <img width="120px" height="60px" src="http://marondal.com/material/images/dulumary/web/jstl/weather-footer.png" alt="기상청 로고">
+                </div>
+                <div class="text-secondary ">
+                    (07062) 서울시 동작구 여의대방로16길 61<br>
+                    Coptright@2020 KMA. All Rights RESERVED
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

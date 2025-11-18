@@ -1,0 +1,40 @@
+#wrap {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+nav {
+
+}
+
+nav > .side-bar {
+    width: 250px;
+    height: 680px;
+    background-color: cornflowerblue;
+}
+
+.logo {
+    width: 250px;
+    height: 100px;
+    font-size: 20px;
+}
+
+.nav-menu {
+    font-size: 18px;
+}
+
+section {
+
+}
+
+section > .main-content {
+    width: 850px;
+}
+
+footer {
+
+}
+
+footer > .footer-menu {
+    height: 120px;
+}
