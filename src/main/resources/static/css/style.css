@@ -9,7 +9,7 @@ nav {
 
 nav > .side-bar {
     width: 250px;
-    height: 680px;
+    height: 100%;
     background-color: cornflowerblue;
 }
 

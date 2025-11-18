@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="wrap" class="">
-        <div class="d-flex">
+        <div class="d-flex main">
             <nav>
                 <div class="side-bar">
                     <div class="logo text-light font-weight-bold text-center pt-2">
@@ -39,15 +39,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>2015년 7월 1일</td>
-                                <td>
-                                    <img src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg">
+                            <tr th:each="weather:${weatherList}">
+                                <td th:text="${weather.date}">2015년 7월 1일</td>
+                                <td th:switch="${weather.weather}">
+                                    <img th:case="맑음" src="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg">
+                                    <img th:case="구름조금" src="http://marondal.com/material/images/dulumary/web/jstl/partlyCloudy.jpg">
+                                    <img th:case="흐림" src="http://marondal.com/material/images/dulumary/web/jstl/cloudy.jpg">
+                                    <img th:case="비" src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg">
                                 </td>
-                                <td>21.9&#x2103;</td>
-                                <td>83.5mm</td>
-                                <td>보통</td>
-                                <td>2.9km/h</td>
+                                <td th:text="${weather.temperatures} + '℃'">21.9</td>
+                                <td th:text="|${weather.precipitation}mm|">83.5mm</td>
+                                <td th:text="${weather.microDust}">보통</td>
+                                <td th:text="|${weather.windSpeed}km/h|">2.9km/h</td>
                             </tr>
                         </tbody>
                     </table>
