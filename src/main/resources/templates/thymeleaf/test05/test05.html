@@ -5,7 +5,7 @@
     <title>배탈의민족</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
           integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/test05/style.css">
+    <link rel="stylesheet" href="/thymeleaf/css/test05/style.css">
 </head>
 <body>
     <div id="wrap" class="">
@@ -21,7 +21,9 @@
                 </div>
                 <div class="store-list">
                     <div th:each="store : ${storeList}" class="store border border-info rounded px-2 my-2">
-                        <div th:text="${store.name}" class="store-name">교촌치킨</div>
+                        <div>
+                            <a class="text-dark" th:href="@{/store/storeReview(id = ${store.id})}"><span th:text="${store.name}" class="store-name"></span></a>
+                        </div>
                         <div th:text="|전화번호 : ${store.businessNumber}|">전화번호 : 000-000-000</div>
                         <div th:text="|주소 : ${store.address}|">주소 : 00:00구</div>
                     </div>

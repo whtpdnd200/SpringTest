@@ -1,11 +1,15 @@
 package com.devwork.springtest.thymeleaf.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class WeatherHistory {
 
     private int id;
+    @DateTimeFormat(pattern = "yyyy년MM월dd일")
     private LocalDate date;
     private String weather;
     private double temperatures;

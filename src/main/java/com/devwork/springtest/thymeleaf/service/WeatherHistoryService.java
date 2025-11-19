@@ -5,6 +5,8 @@ import com.devwork.springtest.thymeleaf.repository.WeatherHistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -15,5 +17,10 @@ public class WeatherHistoryService {
 
     public List<WeatherHistory> getWeatherList() {
         return weatherHistoryRepository.selectWeatherList();
+    }
+
+    public int createWeather(WeatherHistory weatherHistory) {
+
+        return weatherHistoryRepository.insertWeather(weatherHistory);
     }
 }
