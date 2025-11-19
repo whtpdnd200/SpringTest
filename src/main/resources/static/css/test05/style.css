@@ -1,0 +1,29 @@
+#wrap {
+    width: 600px;
+    height: 800px;
+    margin: 0 auto;
+}
+
+header {
+    height: 100px;
+}
+
+header > .logo {
+
+}
+
+section {
+    height: 600px;
+}
+
+.store-name {
+    font-size: 30px;
+}
+
+footer {
+    height: 100px;
+}
+
+.footer-logo {
+    font-size: 25px;
+}
