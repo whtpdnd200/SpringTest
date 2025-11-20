@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RequestMapping("/store")
 @Controller
@@ -22,8 +23,9 @@ public class NewStoreController {
     }
 
     @GetMapping("/storeReview")
-    public String storeReview() {
+    public String storeReview(Model model, @RequestParam("storeId") int storeId) {
 
+        model.addAttribute("reviewList", storeService.getReviewList(storeId));
         return "/thymeleaf/test05/test05Review";
     }
 }

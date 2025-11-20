@@ -17,4 +17,23 @@
         FROM
             `store`
     </select>
+
+    <select id="selectReviewList"
+    resultType="com.devwork.springtest.thymeleaf.domain.Review">
+        SELECT
+            `id`
+            , `store_id`
+            , `menu`
+            , `user_name`
+            , `point`
+            , `review`
+            , `created_at`
+            , `updated_at`
+        FROM
+            `new_review`
+        WHERE
+            `store_id` = #{storeId}
+        ORDER BY
+            `id` DESC
+    </select>
 </mapper>

@@ -2,6 +2,7 @@ package com.devwork.springtest.database.service;
 
 import com.devwork.springtest.database.domain.Store;
 import com.devwork.springtest.database.repository.StoreRepository;
+import com.devwork.springtest.thymeleaf.domain.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +20,10 @@ public class StoreService {
     {
         List<Store> storeList = storeRepository.getStoreList();
         return storeList;
+    }
+
+    // store테이블에 연결된 리뷰 정보 리스트 가져오기
+    public List<Review> getReviewList(int storeId) {
+        return storeRepository.selectReviewList(storeId);
     }
 }

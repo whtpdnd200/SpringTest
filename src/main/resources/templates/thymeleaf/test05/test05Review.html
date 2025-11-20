@@ -16,7 +16,32 @@
     </header>
     <section class="">
         <div class="main-content">
-
+            <div class="title display-4">
+                리뷰
+            </div>
+            <div class="store-list">
+                <div th:unless="${reviewList.isEmpty()}" th:each="review : ${reviewList}"
+                    th:with="int = ${#numbers.formatInteger(review.point, 0)}, dec = ${review.point % 1.0}, emptyStar = 4 - ${#numbers.formatInteger(review.point, 0)}"
+                     class="store border border-info rounded p-3 my-2">
+                    <div class="d-flex my-1">
+                        <div class="font-weight-bold" th:text="${review.userName}"></div>
+                        <div class="ml-2">
+<!--                            <span th:text="${int}"></span>-->
+<!--                            <span th:text="${dec}"></span>-->
+<!--                            <span th:text="${emptyStar}"></span>-->
+                            <img width="17px" height="17px" th:each="i : ${#numbers.sequence(1, int)}" src="http://marondal.com/material/images/dulumary/web/jstl/star_fill.png">
+                            <img width="17px" height="17px" th:if="${dec == 0.5}" src="http://marondal.com/material/images/dulumary/web/jstl/star_half.png">
+                            <img th:if="${emptyStar != 0 && emptyStar > 0}" width="17px" height="17px"  th:each="i : ${#numbers.sequence(1, emptyStar)}" src="http://marondal.com/material/images/dulumary/web/jstl/star_empty.png">
+                        </div>
+                    </div>
+                    <div class="text-secondary my-1 small" th:text="${#temporals.format(review.createdAt, 'yyyy년 M월 d일')}"></div>
+                    <div class="my-1" th:text="${review.review}"></div>
+                    <span class="my-1 menu p-1 border rounded" th:text="${review.menu}"></span>
+                </div>
+                <div th:if="${reviewList.isEmpty()}">
+                    <h1 class="pl-5 py-3">작성된 리뷰가 없습니다.</h1>
+                </div>
+            </div>
         </div>
     </section>
     <hr>

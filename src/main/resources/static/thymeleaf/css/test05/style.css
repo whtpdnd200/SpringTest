@@ -18,6 +18,10 @@ section {
     font-size: 30px;
 }
 
+.menu {
+    background-color: gainsboro;
+}
+
 footer {
     height: 100px;
 }
