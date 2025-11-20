@@ -16,4 +16,14 @@
             , #{url}
         )
     </insert>
+
+    <select id="selectBookMarkList"
+    resultType="com.devwork.springtest.ajax.domain.BookMark">
+        SELECT
+            `id`
+            , `name`
+            , `url`
+        FROM
+            `bookmark`
+    </select>
 </mapper>

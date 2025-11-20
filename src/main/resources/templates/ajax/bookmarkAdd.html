@@ -32,19 +32,32 @@
                 return;
             }
 
-            if(!url.startsWith("http://") || !url.startsWith("https://")) {
+            if(!url.startsWith("http://") && !url.startsWith("https://")) {
                 alert("주소는 http://나 https://로 시작해야 합니다");
                 return;
             }
 
             $.ajax({
                 type:"post"
-                , url: "bookmark/add"
+                , url: "/bookmark/add"
                 , data:{
                     "title" : title
                     , "url" : url
                 }
-                
+                , success:function(response) {
+                    if(response.result == "success") {
+                        alert("즐겨찾기 추가 완료");
+                        location.href = "/bookmark/info";
+                        return;
+                    } else {
+                        alert("즐겨찾기 추가 실패");
+                        return;
+                    }
+                }
+                , error:function() {
+                    alert("서버 통신 에러");
+                    return;
+                }
             });
 
         });
