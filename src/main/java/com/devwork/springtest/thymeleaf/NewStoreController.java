@@ -22,9 +22,11 @@ public class NewStoreController {
         return "/thymeleaf/test05/test05";
     }
 
-    @GetMapping("/storeReview")
-    public String storeReview(Model model, @RequestParam("storeId") int storeId) {
+    @GetMapping("/review")
+    public String storeReview(Model model, @RequestParam("store-id") int storeId
+                                , @RequestParam("store-name") String StoreName) {
 
+        model.addAttribute("storeName", StoreName);
         model.addAttribute("reviewList", storeService.getReviewList(storeId));
         return "/thymeleaf/test05/test05Review";
     }

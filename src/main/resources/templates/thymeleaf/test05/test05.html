@@ -22,7 +22,7 @@
                 <div class="store-list">
                     <div th:each="store : ${storeList}" class="store border border-info rounded px-2 my-2">
                         <div>
-                            <a class="text-dark" th:href="@{/store/storeReview(storeId = ${store.id})}"><span th:text="${store.name}" class="store-name"></span></a>
+                            <a class="text-dark" th:href="@{/store/review(store-id = ${store.id}, store-name = ${store.name})}"><span th:text="${store.name}" class="store-name"></span></a>
                         </div>
                         <div th:text="|전화번호 : ${store.businessNumber}|">전화번호 : 000-000-000</div>
                         <div th:text="|주소 : ${store.address}|">주소 : 00:00구</div>
