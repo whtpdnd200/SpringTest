@@ -31,7 +31,7 @@
 <!--                            <span th:text="${emptyStar}"></span>-->
                             <img width="17px" height="17px" th:each="i : ${#numbers.sequence(1, int)}" src="http://marondal.com/material/images/dulumary/web/jstl/star_fill.png">
                             <img width="17px" height="17px" th:if="${dec == 0.5}" src="http://marondal.com/material/images/dulumary/web/jstl/star_half.png">
-                            <img th:if="${emptyStar != 0 && emptyStar > 0}" width="17px" height="17px"  th:each="i : ${#numbers.sequence(1, emptyStar)}" src="http://marondal.com/material/images/dulumary/web/jstl/star_empty.png">
+                            <img width="17px" height="17px" th:if="${emptyStar != 0 && emptyStar > 0}" th:each="i : ${#numbers.sequence(1, emptyStar)}" src="http://marondal.com/material/images/dulumary/web/jstl/star_empty.png">
                         </div>
                     </div>
                     <div class="text-secondary my-1 small" th:text="${#temporals.format(review.createdAt, 'yyyy년 M월 d일')}"></div>
