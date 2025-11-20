@@ -1,6 +1,7 @@
 package com.devwork.springtest.thymeleaf;
 
 import com.devwork.springtest.database.service.StoreService;
+import com.devwork.springtest.thymeleaf.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,8 @@ public class NewStoreController {
 
     @Autowired
     private StoreService storeService;
+    @Autowired
+    private ReviewService reviewService;
 
     @GetMapping("/info")
     public String storeInfo(Model model) {
@@ -27,7 +30,7 @@ public class NewStoreController {
                                 , @RequestParam("store-name") String StoreName) {
 
         model.addAttribute("storeName", StoreName);
-        model.addAttribute("reviewList", storeService.getReviewList(storeId));
+        model.addAttribute("reviewList", reviewService.getReviewList(storeId));
         return "/thymeleaf/test05/test05Review";
     }
 }

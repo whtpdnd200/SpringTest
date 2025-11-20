@@ -19,7 +19,7 @@ public class WeatherHistoryController {
 
     @Autowired
     private WeatherHistoryService weatherHistoryService;
-    
+
     @GetMapping("/info")
     public String weatherInfo(Model model) {
         model.addAttribute("weatherList", weatherHistoryService.getWeatherList());
@@ -33,7 +33,7 @@ public class WeatherHistoryController {
     }
 
     @GetMapping("/add")
-    public String weatherAdd(Model model, @ModelAttribute("weatherHistory") WeatherHistory weatherHistory) {
+    public String weatherAdd(@ModelAttribute WeatherHistory weatherHistory) {
 
         int count = weatherHistoryService.createWeather(weatherHistory);
         return "redirect:/thymeleaf/weather/info";

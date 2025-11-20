@@ -21,9 +21,4 @@ public class StoreService {
         List<Store> storeList = storeRepository.getStoreList();
         return storeList;
     }
-
-    // store테이블에 연결된 리뷰 정보 리스트 가져오기
-    public List<Review> getReviewList(int storeId) {
-        return storeRepository.selectReviewList(storeId);
-    }
 }
