@@ -30,13 +30,13 @@ public class BookMarkController {
             , @RequestParam("url") String url
             , @RequestParam("isDuplicateUrl") boolean isDup) {
 
-        int count = bookMarkService.createBookMark(title, url);
-        // 성공 : {"result" : "success"}
-        // 실패 : {"result" : "fail"}
-
         if(isDup) {
             return null;
         }
+
+        int count = bookMarkService.createBookMark(title, url);
+        // 성공 : {"result" : "success"}
+        // 실패 : {"result" : "fail"}
 
         Map<String, String> bookMarkMap = new HashMap<>();
         if(count == 1) {
