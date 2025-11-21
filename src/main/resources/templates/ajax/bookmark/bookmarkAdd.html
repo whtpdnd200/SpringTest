@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>즐겨찾기 추가하기</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="/ajax/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>즐겨 찾기 추가하기</h2>
+        <label>제목</label>
+        <input class="form-control" type="text" id="title">
+        <label>주소</label>
+        <div class="d-flex">
+            <input class="form-control col-10" type="text" id="url"> <button id="isDuplicateBtn" class="ml-3 btn btn-info" type="button">중복확인</button>
+        </div>
+        <div id="isDupDiv" class="hide text-danger small">중복된 url 입니다</div>
+        <div id="isNotDupDiv" class="hide text-success small">저장 가능한 URL 입니다.</div>
+        <button id="addBtn" class="btn btn-success btn-block mt-2">추가</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+
+        let isDuplicateUrl;
+
+        $("#isDuplicateBtn").on("click", function() {
+
+            let url = $("#url").val();
+
+            if(url == "") {
+                alert("주소를 입력하세요");
+                return;
+            }
+
+            if(!url.startsWith("http://") && !url.startsWith("https://")) {
+                alert("주소는 http://나 https://로 시작해야 합니다");
+                return;
+            }
+
+            $.ajax({
+                type:"get"
+                , url:"/bookmark/duplicate-url"
+                , data:{"url": url}
+                , success:function(response) {
+                    if(response.result) {
+                        isDuplicateUrl = false;
+                        $("#isDupDiv").hide();
+                        $("#isNotDupDiv").show();
+                    } else {
+                        isDuplicateUrl = true;
+                        $("#isNotDupDiv").hide();
+                        $("#isDupDiv").show();
+
+                    }
+                }
+                , error:function() {
+                    alert("통신 에러!");
+                }
+            });
+        });
+
+        $("#addBtn").on("click", function() {
+            let title = $("#title").val();
+            let url = $("#url").val();
+
+            if(title == "") {
+                alert("제목을 입력하세요");
+                return;
+            }
+
+            if(url == "") {
+                alert("주소를 입력하세요");
+                return;
+            }
+
+            if(!url.startsWith("http://") && !url.startsWith("https://")) {
+                alert("주소는 http://나 https://로 시작해야 합니다");
+                return;
+            }
+
+            if(isDuplicateUrl == true) {
+                alert("중복된 주소는 추가 할 수 없습니다!");
+                return;
+            }
+
+            $.ajax({
+                type:"post"
+                , url: "/bookmark/add"
+                , data:{
+                    "title" : title
+                    , "url" : url
+                    , "isDuplicateUrl" : isDuplicateUrl
+                }
+
+                , success:function(response) {
+                    if(response == null) {
+                        alert("중복된 url은 추가 할 수 없습니다!");
+                        return
+                    } else {
+                        if(response.result == "success") {
+                            alert("즐겨찾기 추가 완료");
+                            location.href = "/bookmark/info";
+                        } else {
+                            alert("즐겨찾기 추가 실패");
+                        }
+                    }
+                }
+                , error:function() {
+                    alert("서버 통신 에러");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

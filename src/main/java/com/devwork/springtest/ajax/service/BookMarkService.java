@@ -20,4 +20,14 @@ public class BookMarkService {
     public List<BookMark> getBookMarkList() {
         return bookMarkRepository.selectBookMarkList();
     }
+
+    public boolean isDuplicateUrl(String url) {
+
+        return bookMarkRepository.selectCountUrl(url) == 0;
+    }
+
+    public boolean deleteBookMarkById(int id) {
+
+        return bookMarkRepository.deleteBookMarkById(id) == 1;
+    }
 }

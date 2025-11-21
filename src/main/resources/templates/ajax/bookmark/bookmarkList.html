@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>즐겨찾기 리스트</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+    <div id="wrap" class="container">
+        <h2>즐겨찾기 목록</h2>
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>이름</th>
+                    <th>주소</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="bookMark : ${bookMarkList}">
+                    <td th:text="${bookMark.id}">1</td>
+                    <td th:text="${bookMark.name}">네이버</td>
+                    <td th:text="${bookMark.url}">주소임</td>
+                    <td><button th:data-id="${bookMark.id}" class="delBtn btn btn-danger" type="button">삭제</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(".delBtn").on("click", function() {
+            let id = $(this).data("id");
+
+            $.ajax({
+                type:"get"
+                , url:"/bookmark/delete"
+                , data:{"id" : id}
+                ,success:function(response) {
+                    if(response.result) {
+                        location.reload();
+                    } else {
+                        alert("즐겨찾기 삭제 오류");
+                    }
+                }
+                , error:function() {
+                    alert("통신 에러!");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

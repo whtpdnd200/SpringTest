@@ -12,4 +12,8 @@ public interface BookMarkRepository {
     public int insertBookMark(@Param("title") String title, @Param("url") String url);
 
     public List<BookMark> selectBookMarkList();
+
+    public int selectCountUrl(@Param("url") String url);
+
+    public int deleteBookMarkById(@Param("id") int id);
 }
