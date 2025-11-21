@@ -3,10 +3,8 @@ package com.devwork.springtest.ajax;
 import com.devwork.springtest.ajax.service.BookMarkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +22,7 @@ public class BookMarkController {
         return "/ajax/bookmarkAdd";
     }
 
+    @ResponseBody
     @PostMapping("/add")
     public Map<String, String> addBookMark(
             @RequestParam("title") String title
@@ -38,5 +37,12 @@ public class BookMarkController {
         }
 
         return bookMarkMap;
+    }
+
+    @GetMapping("/info")
+    public String info(Model model) {
+
+        model.addAttribute("bookMarkList", bookMarkService.getBookMarkList());
+        return "/ajax/bookmarkList";
     }
 }
