@@ -81,6 +81,11 @@
                 return;
             }
 
+            if(isDuplicateUrl == null || isDuplicateUrl == "") {
+                alert("url 중복검사를 실행 해주세요!");
+                return;
+            }
+
             if(isDuplicateUrl == true) {
                 alert("중복된 주소는 추가 할 수 없습니다!");
                 return;
@@ -96,17 +101,18 @@
                 }
 
                 , success:function(response) {
-                    if(response == null) {
+                    if(response == null || response == "") {
                         alert("중복된 url은 추가 할 수 없습니다!");
-                        return
-                    } else {
-                        if(response.result == "success") {
-                            alert("즐겨찾기 추가 완료");
-                            location.href = "/bookmark/info";
-                        } else {
-                            alert("즐겨찾기 추가 실패");
-                        }
+                        return;
                     }
+
+                    if(response.result == "success") {
+                        alert("즐겨찾기 추가 완료");
+                        location.href = "/bookmark/info";
+                    } else {
+                        alert("즐겨찾기 추가 실패");
+                    }
+
                 }
                 , error:function() {
                     alert("서버 통신 에러");
