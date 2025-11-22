@@ -24,7 +24,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
 
-        let isDuplicateUrl;
+        var isDuplicateUrl = null;
 
         $("#isDuplicateBtn").on("click", function() {
 
@@ -46,14 +46,14 @@
                 , data:{"url": url}
                 , success:function(response) {
                     if(response.result) {
-                        isDuplicateUrl = false;
-                        $("#isDupDiv").hide();
-                        $("#isNotDupDiv").show();
-                    } else {
                         isDuplicateUrl = true;
                         $("#isNotDupDiv").hide();
                         $("#isDupDiv").show();
 
+                    } else {
+                        isDuplicateUrl = false;
+                        $("#isDupDiv").hide();
+                        $("#isNotDupDiv").show();
                     }
                 }
                 , error:function() {
@@ -63,6 +63,7 @@
         });
 
         $("#addBtn").on("click", function() {
+            //alert(isDuplicateUrl);
             let title = $("#title").val();
             let url = $("#url").val();
 
@@ -81,12 +82,12 @@
                 return;
             }
 
-            if(isDuplicateUrl == null || isDuplicateUrl == "") {
+            if(isDuplicateUrl == null) {
                 alert("url 중복검사를 실행 해주세요!");
                 return;
             }
 
-            if(isDuplicateUrl == true) {
+            if(isDuplicateUrl) {
                 alert("중복된 주소는 추가 할 수 없습니다!");
                 return;
             }
@@ -97,11 +98,10 @@
                 , data:{
                     "title" : title
                     , "url" : url
-                    , "isDuplicateUrl" : isDuplicateUrl
                 }
 
                 , success:function(response) {
-                    if(response == null || response == "") {
+                    if(response.result == "duplicate") {
                         alert("중복된 url은 추가 할 수 없습니다!");
                         return;
                     }

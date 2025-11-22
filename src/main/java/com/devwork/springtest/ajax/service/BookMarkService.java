@@ -23,7 +23,7 @@ public class BookMarkService {
 
     public boolean isDuplicateUrl(String url) {
 
-        return bookMarkRepository.selectCountUrl(url) == 0;
+        return bookMarkRepository.selectCountUrl(url) != 0;
     }
 
     public boolean deleteBookMarkById(int id) {

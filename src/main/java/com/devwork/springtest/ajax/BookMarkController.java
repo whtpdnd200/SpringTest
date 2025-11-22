@@ -27,18 +27,20 @@ public class BookMarkController {
     @PostMapping("/add")
     public Map<String, String> addBookMark(
             @RequestParam("title") String title
-            , @RequestParam("url") String url
-            , @RequestParam("isDuplicateUrl") boolean isDup) {
+            , @RequestParam("url") String url) {
 
-        if(isDup) {
-            return null;
+        Map<String, String> bookMarkMap = new HashMap<>();
+
+        if(bookMarkService.isDuplicateUrl(url)) {
+            bookMarkMap.put("result", "duplicate");
+            return bookMarkMap;
         }
 
         int count = bookMarkService.createBookMark(title, url);
         // 성공 : {"result" : "success"}
         // 실패 : {"result" : "fail"}
 
-        Map<String, String> bookMarkMap = new HashMap<>();
+
         if(count == 1) {
             bookMarkMap.put("result", "success");
         } else {
