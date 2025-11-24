@@ -30,4 +30,10 @@ public class PensionService {
 
         return pensionRepository.insertBooking(booking) == 1;
     }
+
+    // 예약 정보 확인
+    public Booking selectBooking(String name, String phoneNumber) {
+
+        return pensionRepository.selectBooking(name, phoneNumber);
+    }
 }

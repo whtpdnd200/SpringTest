@@ -15,4 +15,5 @@ public interface PensionRepository {
 
     public int insertBooking(Booking booking);
 
+    public Booking selectBooking(@Param("name") String name, @Param("phoneNumber") String phoneNumber);
 }

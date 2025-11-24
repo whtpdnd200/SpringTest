@@ -18,7 +18,7 @@
             <ul class="nav nav-fill font-weight-bold">
                 <li class="nav-item"><a href="/pension/home" class="nav-link text-light">팬션소개</a></li>
                 <li class="nav-item"><a href="#" class="nav-link text-light">객실보기</a></li>
-                <li class="nav-item"><a href="/pension/bookmark/form" class="nav-link text-light">예약하기</a></li>
+                <li class="nav-item"><a href="/pension/form" class="nav-link text-light">예약하기</a></li>
                 <li class="nav-item"><a href="/pension/booking-list" class="nav-link text-light">예약목록</a></li>
             </ul>
         </div>
@@ -82,6 +82,26 @@
             return;
         }
 
+        $.ajax({
+            type:"get"
+            , url:"/pension/info"
+            , data:{"name" : name, "phoneNumber" : phoneNumber}
+            , success:function(response) {
+                if(response == "") {
+                    alert("조회 결과가 없습니다");
+                    return;
+                }
+
+                alert("이름 : " + response.name + "\n" +
+                        "날짜 : " + response.date + "\n" +
+                        " 일수 : " + response.day + "\n" +
+                        " 인원 : " + response.headcount + "\n" +
+                        " 상태 : " + response.state);
+            }
+            , error:function() {
+                alert("서버 통신 에러!!");
+            }
+        });
 
     });
 

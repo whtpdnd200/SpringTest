@@ -65,6 +65,7 @@ public class PensionController {
     public Booking getBookingInfo(@RequestParam("name") String name
             , @RequestParam("phoneNumber") String phoneNumber) {
 
+        return pensionService.selectBooking(name, phoneNumber);
         
     }
 
