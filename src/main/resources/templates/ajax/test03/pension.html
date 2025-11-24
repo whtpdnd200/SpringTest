@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>통나무 팬션</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/ajax/css/test03/style.css">
+</head>
+<body>
+
+<div id="wrap" class="">
+    <header class="text-center">
+        <div class="display-4">통나무 팬션</div>
+    </header>
+    <nav class="main-menu">
+        <div class="">
+            <ul class="nav nav-fill font-weight-bold">
+                <li class="nav-item"><a href="/pension/home" class="nav-link text-light">팬션소개</a></li>
+                <li class="nav-item"><a href="#" class="nav-link text-light">객실보기</a></li>
+                <li class="nav-item"><a href="/pension/bookmark/form" class="nav-link text-light">예약하기</a></li>
+                <li class="nav-item"><a href="/pension/booking-list" class="nav-link text-light">예약목록</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="main-banner">
+        <img id="bannerImg" src="http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner1.jpg">
+    </section>
+    <section class="contents">
+        <article class="main-contents d-flex justify-content-center text-white">
+            <div class="reserveing col-4 d-flex align-items-center justify-content-center display-4">
+                실시간<br> 예약하기
+            </div>
+            <div class="reserve-check col-5">
+
+                <div class="text">예약 확인</div>
+
+                <div class="memberInput">
+                    <div class="d-flex mt-3">
+                        <label class="col-3">이름 : </label>
+                        <input id="userName" type="text" class="form-control">
+                    </div>
+                    <div class="d-flex mt-3">
+                        <label class="col-3">전화번호 : </label>
+                        <input id="userPhoneNumber" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button id="ckeckBtn" class="btn btn-success mt-2" type="button">조회 하기</button>
+                </div>
+
+            </div>
+            <div class="phone-number col-3 d-flex justify-content-center align-items-center text-light">
+                <h3>예약문의 :<br>010-<br>000-1111</h3>
+            </div>
+        </article>
+    </section>
+    <footer class="mt-2">
+        <div class="d-flex justify-content-start text-secondary small">
+            제주특별자치도 제주시 애월읍<br>
+            사업자 등록번호 : 111-22-255222 / 농어촌민박사업자지정/ 대표:김동욱<br>
+            Copyright 2025 tongnamu All right reseved
+        </div>
+    </footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+
+<script>
+
+    $("#ckeckBtn").on("click", function() {
+        let name = $("#userName").val();
+        let phoneNumber = $("#userPhoneNumber").val();
+
+        if(name == "") {
+            alert("이름을 입력해주세요!!");
+            return;
+        }
+
+        if(phoneNumber == "") {
+            alert("전화번호를 입력해주세요!!");
+            return;
+        }
+
+
+    });
+
+    var imgList = ["http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner1.jpg",
+        "http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner2.jpg",
+        "http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner3.jpg",
+        "http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner4.jpg"
+    ];
+
+    var index = 0;
+
+    setInterval(function() {
+        $("#bannerImg").prop("src", imgList[index]);
+        index++;
+        if(index == imgList.length)
+        {
+            index = 0;
+        }
+    }, 3000);
+
+    $("#reseveDate").datepicker({
+        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+        dateFormat:"yy년 mm월 dd일",
+        minDate: 0
+    });
+
+</script>
+</body>
+</html>

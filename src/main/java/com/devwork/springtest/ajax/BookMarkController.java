@@ -58,7 +58,7 @@ public class BookMarkController {
     }
 
     @ResponseBody
-    @GetMapping("/duplicate-url")
+    @PostMapping("/duplicate-url")
     public Map<String, Boolean> isDuplicateUrl(@RequestParam("url") String url) {
 
         Map<String, Boolean> resultMap = new HashMap<>();
@@ -70,7 +70,7 @@ public class BookMarkController {
 
     @ResponseBody
     @GetMapping("/delete")
-    public Map<String, Boolean> deleteBookMarkById(@RequestParam("id") int id) {
+    public Map<String, Boolean> removeBookMarkById(@RequestParam("id") int id) {
 
 
         Map<String, Boolean> resultMap = new HashMap<>();

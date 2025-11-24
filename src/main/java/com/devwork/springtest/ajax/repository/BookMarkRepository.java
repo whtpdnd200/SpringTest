@@ -16,4 +16,5 @@ public interface BookMarkRepository {
     public int selectCountUrl(@Param("url") String url);
 
     public int deleteBookMarkById(@Param("id") int id);
+
 }

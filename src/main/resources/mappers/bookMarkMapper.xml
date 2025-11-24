@@ -37,8 +37,7 @@
     </select>
 
     <delete id="deleteBookMarkById" parameterType="int">
-        DELETE
-        FROM
+        DELETE FROM
             `bookmark`
         WHERE
             `id` = #{id}

@@ -1,0 +1,49 @@
+#wrap {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    height: 100px;
+}
+
+nav {
+    height: 40px;
+}
+
+.main-menu {
+    background-color: peru;
+}
+
+.main-banner {
+
+}
+
+.contents {
+
+}
+
+.main-contents > .reserveing {
+    background-color: sienna;
+}
+
+.main-contents > .reserve-check {
+    background-color:saddlebrown;
+}
+
+.text {
+    font-size: 30px;
+}
+
+.main-contents > .phone-number {
+    background-color: sienna;
+    height: 300px;
+}
+
+footer {
+    height: 100px;
+}
+
+.nav-item:hover {
+    background-color: aqua;
+}

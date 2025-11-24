@@ -15,14 +15,15 @@
                     <th>No.</th>
                     <th>이름</th>
                     <th>주소</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="bookMark : ${bookMarkList}">
-                    <td th:text="${bookMark.id}">1</td>
+                <tr th:each="bookMark, status: ${bookMarkList}">
+                    <td th:text="${status.count}">1</td>
                     <td th:text="${bookMark.name}">네이버</td>
                     <td th:text="${bookMark.url}">주소임</td>
-                    <td><button th:data-id="${bookMark.id}" class="delBtn btn btn-danger" type="button">삭제</button></td>
+                    <td><button th:data-id="${bookMark.id}" class="delete-btn btn btn-danger btn-sm" type="button">삭제</button></td>
                 </tr>
             </tbody>
         </table>
@@ -30,7 +31,7 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
-        $(".delBtn").on("click", function() {
+        $(".delete-btn").on("click", function() {
             let id = $(this).data("id");
 
             $.ajax({

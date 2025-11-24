@@ -14,18 +14,22 @@ public class BookMarkService {
     private BookMarkRepository bookMarkRepository;
 
     public int createBookMark(String title, String url) {
+
         return bookMarkRepository.insertBookMark(title, url);
     }
 
     public List<BookMark> getBookMarkList() {
+
         return bookMarkRepository.selectBookMarkList();
     }
 
+    // 0이 아니면 중복(true), 0이면 중복이 아님(false)
     public boolean isDuplicateUrl(String url) {
 
         return bookMarkRepository.selectCountUrl(url) != 0;
     }
 
+    // 1이면 삭제 완료(true), 1이 아니면 삭제 실패(false)
     public boolean deleteBookMarkById(int id) {
 
         return bookMarkRepository.deleteBookMarkById(id) == 1;
