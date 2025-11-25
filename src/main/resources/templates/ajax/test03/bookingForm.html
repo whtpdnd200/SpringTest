@@ -7,8 +7,6 @@
           integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="/ajax/css/test03/style.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
 <div id="wrap" class="">
@@ -30,7 +28,7 @@
             <h2 class="text-center">예약 하기</h2>
 
             <div class="booking-form d-flex justify-content-center">
-                <div class="w-75">
+                <div class="w-50">
                     <label>이름</label>
                     <input id="nameInput" type="text" class="form-control mb-2">
                     <label>예약날짜</label>
@@ -55,6 +53,8 @@
     </footer>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 
     $("#submitBtn").on("click", function() {
@@ -82,9 +82,19 @@
             return;
         }
 
+        if(isNaN(day)) {
+            alert("숙박일수는 숫자만 입력 가능합니다.");
+            return;
+        }
+
         if(headCount == "") {
             alert("숙박인원을 입력해주세요!!");
             $("#countInput").focus();
+            return;
+        }
+
+        if(isNaN(headCount)) {
+            alert("숙박인원은 숫자만 입력 가능합니다.");
             return;
         }
 

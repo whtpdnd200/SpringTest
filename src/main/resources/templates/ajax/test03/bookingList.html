@@ -46,10 +46,10 @@
                         <td th:text="${booking.headcount}">인원 테스트</td>
                         <td th:text="${booking.phoneNumber}">번호 테스트</td>
                         <td th:switch="${booking.state}">
-                           <span th:case="대기중" class="text-info">대기중</span>
+                            <span th:case="대기중" class="text-info">대기중</span>
                             <span th:case="확정" class="text-success">확정</span>
                             <span th:case="취소" class="text-danger">취소</span>
-                            <span th:case="*" th:text="${booking.state}" class="text-info"></span>
+                            <span th:case="*" th:text="${booking.state}" class="text-light"></span>
                         </td>
                         <td><button th:data-id="${booking.id}" type="button" class="delete-btn btn btn-danger btn-sm">삭제</button></td>
                     </tr>

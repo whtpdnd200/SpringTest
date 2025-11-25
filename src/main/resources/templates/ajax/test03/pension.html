@@ -87,22 +87,23 @@
             , url:"/pension/info"
             , data:{"name" : name, "phoneNumber" : phoneNumber}
             , success:function(response) {
-                if(response == "") {
-                    alert("조회 결과가 없습니다");
-                    return;
-                }
 
-                alert("이름 : " + response.name + "\n" +
-                        "날짜 : " + response.date + "\n" +
-                        " 일수 : " + response.day + "\n" +
-                        " 인원 : " + response.headcount + "\n" +
-                        " 상태 : " + response.state);
+                if(response.result == "empty") {
+                    alert("조회 결과가 없습니다");
+                } else {
+                    alert(
+                        "이름 : " + response.booking.name + "\n" +
+                        " 날짜 : " + response.booking.date + "\n" +
+                        " 일수 : " + response.booking.day + "\n" +
+                        " 인원 : " + response.booking.headcount + "\n" +
+                        " 상태 : " + response.booking.state
+                    );
+                }
             }
             , error:function() {
                 alert("서버 통신 에러!!");
             }
         });
-
     });
 
     var imgList = ["http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner1.jpg",
@@ -122,11 +123,6 @@
         }
     }, 3000);
 
-    $("#reseveDate").datepicker({
-        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-        dateFormat:"yy년 mm월 dd일",
-        minDate: 0
-    });
 
 </script>
 </body>
