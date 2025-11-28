@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -22,6 +23,6 @@ public interface EmploymentRepository extends JpaRepository<Employment, Integer>
 
     public List<Employment> findByRegionAndSalaryBetween(String region, int prevSalary, int nextSalary);
 
-    @Query(value = "SELECT * FROM `employment` WHERE `deadline` > :deadLine AND `salary` >= :salary ORDER BY `salary` DESC", nativeQuery = true)
-    public List<Employment> selectEmployment(@Param("deadLine") String deadLine, @Param("salary") int salary);
+    @Query(value = "SELECT * FROM `employment` WHERE `deadline` > :deadLine AND `salary` >= :salary AND `type` = :type ORDER BY `salary` DESC", nativeQuery = true)
+    public List<Employment> selectEmployment(@Param("deadLine") LocalDate deadLine, @Param("salary") int salary, @Param("type") String type);
 }

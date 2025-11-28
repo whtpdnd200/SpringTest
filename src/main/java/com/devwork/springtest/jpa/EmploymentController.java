@@ -3,12 +3,14 @@ package com.devwork.springtest.jpa;
 import com.devwork.springtest.jpa.domain.Employment;
 import com.devwork.springtest.jpa.repository.EmploymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -48,7 +50,7 @@ public class EmploymentController {
 
         // findList = employmentRepository.findByRegionAndSalaryBetween("성남시 분당구", 7000, 8500);
 
-        findList = employmentRepository.selectEmployment("2026-04-10", 8100);
+        findList = employmentRepository.selectEmployment(LocalDate.of(2026,4,10), 8100, "정규직");
         return findList;
     }
 }
